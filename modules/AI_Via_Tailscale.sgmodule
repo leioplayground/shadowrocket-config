@@ -1,4 +1,4 @@
-﻿#!name=AI Via Tailscale
+#!name=AI Via Tailscale
 #!desc=所有AI应用走Tailscale隧道
 
 [RULE]
