@@ -1,0 +1,83 @@
+﻿#!url=https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_direct_list.module
+#!name=AI Via Tailscale
+#!homepage=https://github.com/GMOogway/shadowrocket-rules
+#!desc=所有AI应用走Tailscale隧道
+
+[RULE]
+# > IP检测网站规则
+DOMAIN-SUFFIX,ping0.cc,PROXY
+
+# > ChatGPT
+DOMAIN-SUFFIX,chat.com,TAILSCALE
+DOMAIN-SUFFIX,chatgpt.com,TAILSCALE
+DOMAIN-SUFFIX,livekit.cloud,TAILSCALE
+DOMAIN-SUFFIX,oaistatic.com,TAILSCALE
+DOMAIN-SUFFIX,oaiusercontent.com,TAILSCALE
+DOMAIN-SUFFIX,openai.com,TAILSCALE
+DOMAIN-SUFFIX,sora.com,TAILSCALE
+DOMAIN,api.statsig.com,TAILSCALE
+DOMAIN,api-iam.intercom.io,TAILSCALE
+DOMAIN,o33249.ingest.sentry.io,TAILSCALE
+DOMAIN,openaiapi-site.azureedge.net,TAILSCALE
+DOMAIN-KEYWORD,openaiapi,TAILSCALE
+DOMAIN-KEYWORD,openaicom,TAILSCALE
+
+# > Apple Intelligence
+DOMAIN-WILDCARD,*mask*.apple-dns.net,TAILSCALE
+DOMAIN-WILDCARD,*mask*.icloud.com,TAILSCALE
+DOMAIN-WILDCARD,*siri*.apple.com,TAILSCALE
+DOMAIN-SUFFIX,smoot.apple.com,TAILSCALE
+DOMAIN,apple-relay.apple.com,TAILSCALE
+DOMAIN,apple-relay.cloudflare.com,TAILSCALE
+DOMAIN,apple-relay.fastly-edge.com,TAILSCALE
+DOMAIN,cp4.cloudflare.com,TAILSCALE
+DOMAIN,gspe1-ssl.ls.apple.com,TAILSCALE
+DOMAIN,guzzoni.apple.com,TAILSCALE
+
+# > Claude
+DOMAIN-SUFFIX,claude.ai,TAILSCALE
+DOMAIN-SUFFIX,anthropic.com,TAILSCALE
+
+# > Microsoft Copilot
+DOMAIN,copilot.microsoft.com,TAILSCALE
+DOMAIN,sydney.bing.com,TAILSCALE
+DOMAIN,www.bing.com,TAILSCALE
+# > GitHub Copilot
+DOMAIN-SUFFIX,githubcopilot.com,TAILSCALE
+
+# > Google
+# > > AI Studio
+DOMAIN-SUFFIX,generativeai.google,TAILSCALE
+DOMAIN-SUFFIX,makersuite.google.com,TAILSCALE
+DOMAIN,aistudio.google.com,TAILSCALE
+DOMAIN,alkalicore-pa.clients6.google.com,TAILSCALE
+DOMAIN,alkalimakersuite-pa.clients6.google.com,TAILSCALE
+# > > Antigravity
+DOMAIN,antigravity.google,TAILSCALE
+DOMAIN,antigravity-unleash.goog,TAILSCALE
+# > > DeepMind
+DOMAIN-SUFFIX,deepmind.com,TAILSCALE
+DOMAIN-SUFFIX,deepmind.google,TAILSCALE
+# > > Gemini
+DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com,TAILSCALE
+DOMAIN-SUFFIX,geller-pa.googleapis.com,TAILSCALE
+DOMAIN-SUFFIX,generativelanguage.googleapis.com,TAILSCALE
+DOMAIN,ai.google.dev,TAILSCALE
+DOMAIN,bard.google.com,TAILSCALE
+DOMAIN,gemini.google.com,TAILSCALE
+# > > NotebookLM
+DOMAIN-KEYWORD,notebooklm.google,TAILSCALE
+# > > Search Labs
+DOMAIN-KEYWORD,labs.google,TAILSCALE
+
+# > Grok
+DOMAIN-SUFFIX,grok.com,TAILSCALE
+DOMAIN-SUFFIX,x.ai,TAILSCALE
+
+# > OpenRouter
+DOMAIN-SUFFIX,openrouter.ai,TAILSCALE
+
+# > Perplexity
+DOMAIN-SUFFIX,perplexity.ai,TAILSCALE
+DOMAIN-SUFFIX,pplx.ai,TAILSCALE
+DOMAIN,pplx-res.cloudinary.com,TAILSCALE
