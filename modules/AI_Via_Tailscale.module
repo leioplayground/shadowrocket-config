@@ -1,6 +1,6 @@
-﻿#!url=https://raw.githubusercontent.com/GMOogway/shadowrocket-rules/master/sr_direct_list.module
+﻿#!url=https://raw.githubusercontent.com/leioplayground/shadowrocket-config/main/modules/AI_Via_Tailscale.module
 #!name=AI Via Tailscale
-#!homepage=https://github.com/GMOogway/shadowrocket-rules
+#!homepage=https://github.com/leioplayground/shadowrocket-config
 #!desc=所有AI应用走Tailscale隧道
 
 [RULE]
