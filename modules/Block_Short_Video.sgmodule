@@ -1,0 +1,168 @@
+#!name=屏蔽短视频（优先保留微信通讯与支付）
+#!desc=拒绝已识别的短视频域名；不解密HTTPS、不封共享IP。微信豆/小店内部接口未完整覆盖，详见docs/Block_Short_Video.md。
+
+# 资料核对：2026-10-10。使用全局路由「配置」，启用本模块。
+# 混合内容平台（头条、小红书、哔哩哔哩、AcFun）会连带阻断图文/长视频。
+# 不添加 FINAL、DIRECT、IP/ASN、关键词规则，不覆盖原配置的其他路由。
+# 不封 qq.com、weixin.qq.com、qpic.cn、qlogo.cn、gtimg.com、tenpay.com。
+# 微信豆充值和微信小店不能以封禁微信支付/小程序共享接口代替，见说明。
+
+[Rule]
+# 微信视频号：已识别媒体和网页入口。原生共享连接、直播不保证覆盖。
+DOMAIN,finder.video.qq.com,REJECT
+DOMAIN,channels.weixin.qq.com,REJECT
+
+# QQ/腾讯视频：网页与视频服务；不封微信也使用的 soup.v.qq.com。
+DOMAIN,v.qq.com,REJECT
+DOMAIN,www.v.qq.com,REJECT
+DOMAIN,m.v.qq.com,REJECT
+DOMAIN-SUFFIX,video.qq.com,REJECT
+DOMAIN-SUFFIX,qqvideo.gtimg.com,REJECT
+DOMAIN,v.streaming.qq.com,REJECT
+DOMAIN,ios.video.mpush.qq.com,REJECT
+DOMAIN,video-public-1258344701.shiply-cdn.qq.com,REJECT
+DOMAIN,video-search-1258344701.shiply-cdn.qq.com,REJECT
+DOMAIN,video-vip-1258344701.shiply-cdn.qq.com,REJECT
+
+# 腾讯微视
+DOMAIN-SUFFIX,weishi.com,REJECT
+DOMAIN,weishi.qq.com,REJECT
+
+# 百度：好看视频与全民小视频入口；不封百度搜索/网盘/共享媒体CDN。
+DOMAIN-SUFFIX,haokan.baidu.com,REJECT
+DOMAIN-SUFFIX,haokan.com,REJECT
+DOMAIN,quanmin.baidu.com,REJECT
+
+# 抖音 / 抖音极速版
+DOMAIN-SUFFIX,douyin.com,REJECT
+DOMAIN-SUFFIX,amemv.com,REJECT
+DOMAIN-SUFFIX,amemv.cn,REJECT
+DOMAIN-SUFFIX,amemv.net,REJECT
+DOMAIN-SUFFIX,douyincdn.com,REJECT
+DOMAIN-SUFFIX,douyinpic.com,REJECT
+DOMAIN-SUFFIX,douyinstatic.com,REJECT
+DOMAIN-SUFFIX,douyinvod.com,REJECT
+DOMAIN-SUFFIX,idouyinpic.com,REJECT
+DOMAIN-SUFFIX,idouyinstatic.com,REJECT
+DOMAIN-SUFFIX,idouyinvod.com,REJECT
+DOMAIN-SUFFIX,iesdouyin.com,REJECT
+DOMAIN-SUFFIX,iesdouyin.net,REJECT
+DOMAIN-SUFFIX,douyinfe.com,REJECT
+DOMAIN-SUFFIX,awemeughun.com,REJECT
+DOMAIN-SUFFIX,awemeuglang.com,REJECT
+DOMAIN-SUFFIX,awemeugsoul.com,REJECT
+DOMAIN-SUFFIX,awemeugwave.com,REJECT
+
+# 抖音火山版
+DOMAIN-SUFFIX,huoshan.com,REJECT
+DOMAIN-SUFFIX,huoshancdn.com,REJECT
+DOMAIN-SUFFIX,huoshanimg.com,REJECT
+DOMAIN-SUFFIX,huoshanlive.com,REJECT
+DOMAIN-SUFFIX,huoshanstatic.com,REJECT
+DOMAIN-SUFFIX,huoshanvod.com,REJECT
+DOMAIN-SUFFIX,ihuoshanimg.com,REJECT
+DOMAIN-SUFFIX,ihuoshanlive.com,REJECT
+DOMAIN-SUFFIX,ihuoshanstatic.com,REJECT
+DOMAIN-SUFFIX,ihuoshanvod.com,REJECT
+DOMAIN-SUFFIX,huoshanvideo.cn,REJECT
+DOMAIN-SUFFIX,huoshanvideo.net,REJECT
+DOMAIN-SUFFIX,huoshanxiaoshipin.cn,REJECT
+DOMAIN-SUFFIX,huoshanxiaoshipin.net,REJECT
+
+# 今日头条 / 极速版（包括图文内容）
+DOMAIN-SUFFIX,toutiao.com,REJECT
+DOMAIN-SUFFIX,toutiaoapi.com,REJECT
+DOMAIN-SUFFIX,toutiaocdn.com,REJECT
+DOMAIN-SUFFIX,toutiaocloud.com,REJECT
+DOMAIN-SUFFIX,toutiaocloud.net,REJECT
+DOMAIN-SUFFIX,toutiaoimg.cn,REJECT
+DOMAIN-SUFFIX,toutiaoimg.com,REJECT
+DOMAIN-SUFFIX,toutiaoimg.net,REJECT
+DOMAIN-SUFFIX,toutiaopage.com,REJECT
+DOMAIN-SUFFIX,toutiaostatic.com,REJECT
+DOMAIN-SUFFIX,toutiaovod.com,REJECT
+DOMAIN-SUFFIX,toutiaojisu.com,REJECT
+DOMAIN-SUFFIX,toutiaolite.com,REJECT
+DOMAIN-SUFFIX,toutiaolite1.com,REJECT
+DOMAIN-SUFFIX,toutiaolite2.com,REJECT
+DOMAIN-SUFFIX,ttjisu.com,REJECT
+
+# 西瓜视频（包括长视频）
+DOMAIN-SUFFIX,ixigua.com,REJECT
+DOMAIN-SUFFIX,ixiguavideo.com,REJECT
+DOMAIN-SUFFIX,ixgvideo.com,REJECT
+DOMAIN-SUFFIX,xiguaapp.cn,REJECT
+DOMAIN-SUFFIX,xiguaapp.com,REJECT
+DOMAIN-SUFFIX,xiguashipin.cn,REJECT
+DOMAIN-SUFFIX,xiguashipin.net,REJECT
+DOMAIN-SUFFIX,xiguavideo.cn,REJECT
+DOMAIN-SUFFIX,xiguavideo.net,REJECT
+DOMAIN-SUFFIX,bdxiguaimg.com,REJECT
+DOMAIN-SUFFIX,bdxigualive.com,REJECT
+DOMAIN-SUFFIX,bdxiguastatic.com,REJECT
+DOMAIN-SUFFIX,bdxiguavod.com,REJECT
+DOMAIN-SUFFIX,ibdxiguaimg.com,REJECT
+DOMAIN-SUFFIX,ibdxigualive.com,REJECT
+DOMAIN-SUFFIX,ibdxiguastatic.com,REJECT
+DOMAIN-SUFFIX,ibdxiguavod.com,REJECT
+
+# 皮皮虾
+DOMAIN-SUFFIX,pipix.com,REJECT
+DOMAIN-SUFFIX,hapierxia.com,REJECT
+DOMAIN-SUFFIX,hapipixia.com,REJECT
+DOMAIN-SUFFIX,hapiyixia.com,REJECT
+DOMAIN-SUFFIX,kuailepipixia.com,REJECT
+DOMAIN-SUFFIX,pipixiaha.com,REJECT
+DOMAIN-SUFFIX,piyipiba.com,REJECT
+DOMAIN-SUFFIX,ppxhhh.com,REJECT
+DOMAIN-SUFFIX,ppximg.com,REJECT
+DOMAIN-SUFFIX,ppxstatic.com,REJECT
+DOMAIN-SUFFIX,ppxvod.com,REJECT
+DOMAIN-SUFFIX,xiaoxiaapi.com,REJECT
+
+# 快手 / 快手极速版：主站、API、媒体CDN
+DOMAIN-SUFFIX,kuaishou.com,REJECT
+DOMAIN-SUFFIX,kuaishou.cn,REJECT
+DOMAIN-SUFFIX,kuaishouapp.com,REJECT
+DOMAIN-SUFFIX,kuaishouapp.cn,REJECT
+DOMAIN-SUFFIX,kuaishouapp.net,REJECT
+DOMAIN-SUFFIX,kuaishouapps.com,REJECT
+DOMAIN-SUFFIX,gifshow.com,REJECT
+DOMAIN-SUFFIX,ksapisrv.com,REJECT
+DOMAIN-SUFFIX,kskwai.com,REJECT
+DOMAIN-SUFFIX,kwimgs.com,REJECT
+DOMAIN-SUFFIX,yximgs.com,REJECT
+DOMAIN-SUFFIX,kwaicdn.com,REJECT
+DOMAIN-SUFFIX,kwaicdnx.com,REJECT
+DOMAIN-SUFFIX,kwai.com,REJECT
+DOMAIN-SUFFIX,kwai.net,REJECT
+
+# 小红书（整个应用的图文和视频都会受影响）
+DOMAIN-SUFFIX,xiaohongshu.com,REJECT
+DOMAIN-SUFFIX,xhscdn.com,REJECT
+DOMAIN-SUFFIX,xhscdn.net,REJECT
+
+# 哔哩哔哩（包含长视频、直播、图文，不仅是竖屏短视频）
+DOMAIN-SUFFIX,bilibili.com,REJECT
+DOMAIN-SUFFIX,bilibili.cn,REJECT
+DOMAIN-SUFFIX,bilibili.net,REJECT
+DOMAIN-SUFFIX,b23.tv,REJECT
+DOMAIN-SUFFIX,biliapi.com,REJECT
+DOMAIN-SUFFIX,biliapi.net,REJECT
+DOMAIN-SUFFIX,acgvideo.com,REJECT
+DOMAIN-SUFFIX,bilivideo.com,REJECT
+DOMAIN-SUFFIX,bilivideo.cn,REJECT
+DOMAIN-SUFFIX,bilivideo.net,REJECT
+DOMAIN-SUFFIX,hdslb.com,REJECT
+DOMAIN-SUFFIX,biliimg.com,REJECT
+
+# AcFun（包含长视频、图文）
+DOMAIN-SUFFIX,acfun.cn,REJECT
+DOMAIN-SUFFIX,acfun.com,REJECT
+DOMAIN-SUFFIX,acfun.tv,REJECT
+DOMAIN-SUFFIX,aixifan.com,REJECT
+
+# 美拍 / 秒拍 / 最右：已识别入口，共享CDN不作扩大封禁
+DOMAIN-SUFFIX,meipai.com,REJECT
+DOMAIN-SUFFIX,miaopai.com,REJECT
+DOMAIN-SUFFIX,izuiyou.com,REJECT
