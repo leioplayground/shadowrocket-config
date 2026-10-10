@@ -1,5 +1,5 @@
 #!name=屏蔽短视频（优先保留微信通讯与支付）
-#!desc=拒绝已识别的短视频域名；不解密HTTPS、不封共享IP。微信豆/小店内部接口未完整覆盖，详见docs/Block_Short_Video.md。
+#!desc=拒绝短视频域名，百度系网页及haokan.com跳转Google；HTTPS跳转需安装并信任解密证书。微信豆/小店内部接口未完整覆盖，详见docs/Block_Short_Video.md。
 
 # 资料核对：2026-10-10。使用全局路由「配置」，启用本模块。
 # 混合内容平台（头条、小红书、哔哩哔哩、AcFun）会连带阻断图文/长视频。
@@ -28,10 +28,7 @@ DOMAIN,video-vip-1258344701.shiply-cdn.qq.com,REJECT
 DOMAIN-SUFFIX,weishi.com,REJECT
 DOMAIN,weishi.qq.com,REJECT
 
-# 百度：好看视频与全民小视频入口；不封百度搜索/网盘/共享媒体CDN。
-DOMAIN-SUFFIX,haokan.baidu.com,REJECT
-DOMAIN-SUFFIX,haokan.com,REJECT
-DOMAIN,quanmin.baidu.com,REJECT
+# 百度系与好看视频由下方 URL Rewrite 重定向，不在此拒绝连接。
 
 # 抖音 / 抖音极速版
 DOMAIN-SUFFIX,douyin.com,REJECT
@@ -166,3 +163,13 @@ DOMAIN-SUFFIX,aixifan.com,REJECT
 DOMAIN-SUFFIX,meipai.com,REJECT
 DOMAIN-SUFFIX,miaopai.com,REJECT
 DOMAIN-SUFFIX,izuiyou.com,REJECT
+
+[URL Rewrite]
+# 根域名及所有子域名，丢弃原路径/参数，返回302至Google首页。
+# 包含百度搜索、贴吧、网盘、地图、登录；原生App不保证跟随跳转。
+(?i)^https?://(?:[A-Za-z0-9-]+\.)*(?:baidu\.com(?:\.cn|\.hk)?|baidu\.cn|haokan\.com|hao123\.com|tieba\.com|xiaodutv\.com)(?::[0-9]+)?(?:[/?#]|$) https://www.google.com/ 302
+
+[MITM]
+enable = true
+# 仅追加百度系网页域名，不添加微信、支付或Google域名，不内置证书。
+hostname = %APPEND% baidu.com, *.baidu.com, baidu.com.cn, *.baidu.com.cn, baidu.com.hk, *.baidu.com.hk, baidu.cn, *.baidu.cn, haokan.com, *.haokan.com, hao123.com, *.hao123.com, tieba.com, *.tieba.com, xiaodutv.com, *.xiaodutv.com
